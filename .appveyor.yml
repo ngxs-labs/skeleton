@@ -1,0 +1,17 @@
+image: ubuntu
+
+build: off
+deploy: off
+
+matrix:
+  fast_finish: true
+
+before_test:
+  - docker -v
+  - echo "$GREEN Gonna run build and tests for the @ngxs-labs/$PROJECT_NAME"
+  - echo "$GREEN Appveyor job ID -> $APPVEYOR_JOB_ID"
+
+test_script:
+  - chmod +x ./devops/ci/scripts/chmod-scripts.sh && ./devops/ci/scripts/chmod-scripts.sh
+  - source ./devops/definitions.sh
+  - ./devops/ci/scripts/test.job.sh
