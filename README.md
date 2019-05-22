@@ -4,8 +4,6 @@
 
 ---
 
-> Short project description goes here
-
 # NGXS Labs delivery flow
 
 ## Description
@@ -42,4 +40,4 @@ If you want to create a Labs project - you have to complete further steps.
   yarn create-project --name dispatch-decorator
   ```
 
-* When you push your changes to the new repo - ask someone to add your project to the `appveyor` CI.
+* When you push your changes to the new repo - ask someone to add your project to the `travis` CI.
