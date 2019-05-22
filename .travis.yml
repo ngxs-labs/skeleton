@@ -1,0 +1,28 @@
+language: minimal
+
+services: docker
+
+stages:
+  - build-test
+  - name: bump-version
+    if: branch=master
+
+chmod: &chmod
+  chmod +x ./devops/ci/scripts/chmod-scripts.sh && ./devops/ci/scripts/chmod-scripts.sh
+
+source: &source
+  source ./devops/definitions.sh
+
+jobs:
+  include:
+    - stage: build-test
+      script:
+        - *chmod
+        - *source
+        - ./devops/ci/scripts/build-test.job.sh
+
+    - bump-version:
+      script:
+        - *chmod
+        - *source
+        - ./devops/ci/scripts/bump-version.job.sh

@@ -4,7 +4,9 @@ GREEN="\e[92m"
 
 files=(
   devops/definitions.sh
-  devops/ci/scripts/test.job.sh
+  devops/ci/scripts/build-test.job.sh
+  devops/ci/scripts/bump-version.job.sh
+  devops/ci/scripts/login-to-git.sh
 )
 
 for file in ${files[*]}; do
