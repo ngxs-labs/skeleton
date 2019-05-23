@@ -2,7 +2,7 @@
 
 docker -v
 
-echo "Gonna run build and tests for the @ngxs-labs/$NGXS_LABS_PROJECT_NAME"
+echo -e "$GREEN Gonna run build and tests for the @ngxs-labs/$NGXS_LABS_PROJECT_NAME"
 
 docker run \
   -v $(pwd):/tmp/src \
