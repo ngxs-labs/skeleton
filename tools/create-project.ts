@@ -1,40 +1,30 @@
 import { join } from 'path';
-import { promisify } from 'util';
-import { argv } from 'yargs';
-import * as fs from 'fs';
+import { readFileSync, writeFileSync } from 'fs';
+import * as colors from 'colors/safe';
 
-const readFile = promisify(fs.readFile);
-const writeFile = promisify(fs.writeFile);
+import { getLastTwoArguments } from './utils';
 
 class InvalidCreateProjectArguments extends Error {
-  constructor() {
-    super('You have to run command using appropriate format - "yarn create-project --name $PROJECT_NAME"');
-  }
+  public message = colors.red(`
+    You have to run command using appropriate format:
+    "yarn create-project --name $PROJECT_NAME"
+  `);
 }
 
-async function main() {
-  const name = argv.name as string | undefined;
+function createProject() {
+  const [argument, projectName] = getLastTwoArguments<string, string>();
 
-  if (typeof name !== 'string' || name.length < 5) {
+  if (argument !== '--name' || typeof projectName !== 'string') {
     throw new InvalidCreateProjectArguments();
   }
 
-  const filesToUpdate = [
-    'package.json',
-    'angular.json',
-    'src/package.json',
-    'devops/definitions.sh'
-  ];
+  const filesToUpdate = ['package.json', 'angular.json', 'src/package.json'];
 
   for (const file of filesToUpdate) {
     const path = join(__dirname, '..', file);
-    const content = await readFile(path, { encoding: 'utf-8' });
-
-    await writeFile(
-      path,
-      content.replace(/skeleton/g, name)
-    );
+    const content = readFileSync(path).toString();
+    writeFileSync(path, content.replace(/skeleton/g, name));
   }
 }
 
-main();
+createProject();
