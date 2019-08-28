@@ -35,7 +35,7 @@
     "// - CI": "CI Testing",
     "test:ci": "ng test --project skeleton --colors --runInBand",
     "test:ci:e2e": "yarn start-test serve:integration:static 4200 cy:run",
-    "test:ci:integration": "ng run integration:test --colors --runInBand && yarn build:integration",
+    "test:ci:integration": "yarn build:integration",
     "test:ci:integration:ssr": "yarn build:integration:ssr && yarn start-test serve:integration:ssr 4200 cy:run:ssr",
     "// - UTILS": "Utility scripts",
     "bump": "ts-node ./tools/bump",
