@@ -40,7 +40,7 @@
     "// - UTILS": "Utility scripts",
     "bump": "ts-node ./tools/bump",
     "create-project": "ts-node ./tools/create-project",
-    "format": "prettier src/**/*.ts --write"
+    "format": "prettier {src,integration}/**/*.ts --write"
   },
   "private": true,
   "devDependencies": {
@@ -105,7 +105,7 @@
     "endOfLine": "lf",
     "tabWidth": 2,
     "printWidth": 100,
-    "trailingComma": "es5",
+    "trailingComma": "none",
     "bracketSpacing": true,
     "arrowParens": "avoid",
     "singleQuote": true
