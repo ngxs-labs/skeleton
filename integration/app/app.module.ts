@@ -9,9 +9,9 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule.withServerTransition({ appId: 'universal-package' }),
     HttpClientModule,
-    NgxsModule.forRoot()
+    NgxsModule.forRoot(),
   ],
   declarations: [AppComponent],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
