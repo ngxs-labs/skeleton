@@ -23,7 +23,7 @@ function createProject() {
   for (const file of filesToUpdate) {
     const path = join(__dirname, '..', file);
     const content = readFileSync(path).toString();
-    writeFileSync(path, content.replace(/skeleton/g, name));
+    writeFileSync(path, content.replace(/skeleton/g, projectName));
   }
 }
 
